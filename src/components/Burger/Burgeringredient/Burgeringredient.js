@@ -22,7 +22,7 @@ class BurgerIngredient extends Component {
         console.log('Calling Ingredient Meat', this.props.Type);
         ingredient = <div className={Classes.Meat}></div>;
         break;
-      case( 'Cheese'):
+      case( 'cheese'):
         console.log('Calling Ingredient cheese', this.props.Type);
         ingredient = <div className={Classes.Cheese}></div>;
         break;
