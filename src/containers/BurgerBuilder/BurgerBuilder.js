@@ -22,7 +22,7 @@ class BurgerBuilder extends Component {
       bacon: 0,
       meat: 0
     },
-    totalPrice: 4,
+    totalPrice: 0,
     purchasable: false,
     purchasing: false
   };
@@ -99,6 +99,7 @@ class BurgerBuilder extends Component {
         <OrderSummary ingredients={this.state.ingredients}
       purchasingCancelled = {this.purchasingCancelHandler}
       purchasingContinued = {this.purchasingContinueHandler}
+      price={this.state.totalPrice}
       />
         </Modal>
             <Burger ingredients = {this.state.ingredients}/>
