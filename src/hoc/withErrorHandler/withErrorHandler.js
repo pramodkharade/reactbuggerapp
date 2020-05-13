@@ -7,18 +7,23 @@ const withErrorHandler = (WrappedComponent, axios) => {
       error: null
     };
     componentWillMount() {
-      axios.interceptors.request.use(req => {
+      this.reqInterceptor = axios.interceptors.request.use(req => {
         this.setState({
           error: null
         });
         return req;
       });
-      axios.interceptors.response.use(res => res, error => {
+      this.resInterceptor = axios.interceptors.response.use(res => res, error => {
         this.setState({
           error: error
         });
         console.log('Interceptor is::', error.message);
       });
+    }
+    // removing interceptor to avoid memory leakage 
+    componentWillUnmount() {
+      axios.interceptors.request.eject(this.reqInterceptor);
+      axios.interceptors.response.eject(this.resInterceptor);
     }
     errorConfrimedHandler = () => {
       this.setState({
