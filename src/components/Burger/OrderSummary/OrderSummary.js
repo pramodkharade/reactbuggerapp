@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Auxiliary from '../../../hoc/Auxiliary';
 import Button from '../../UI/Button/Button';
 class OrderSummary extends Component {
-
+  componentWillUpdate() {
+    console.log('Calling order Summary');
+  }
   render() {
     const integrdientSummary = Object.keys(this.props.ingredients)
       .map((igKey) => {
