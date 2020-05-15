@@ -6,11 +6,65 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 class ContactData extends Component {
   state = {
-    name: '',
-    email: '',
-    address: {
-      street: '',
-      postalCode: ''
+    orderForm: {
+      customer: {
+        name: {
+          elementType: 'input',
+          elementConfig: {
+            type: 'text',
+            placeholder: 'Your Name'
+          },
+          value: ''
+        },
+        email: {
+          elementType: 'input',
+          elementConfig: {
+            type: 'email',
+            placeholder: 'Your E-mail'
+          },
+          value: ''
+        },
+        street: {
+          elementType: 'input',
+          elementConfig: {
+            type: 'text',
+            placeholder: 'Your Street'
+          },
+          value: ''
+        },
+        ZipCode: {
+          elementType: 'input',
+          elementConfig: {
+            type: 'number',
+            placeholder: 'Your ZipCode'
+          },
+          value: ''
+        },
+        country: {
+          elementType: 'input',
+          elementConfig: {
+            type: 'text',
+            placeholder: 'Your Country'
+          },
+          value: ''
+        },
+        delivertMethod: {
+          elementType: 'select',
+          elementConfig: {
+            options: [
+              {
+                value: 'Fastes',
+                displayValue: 'Fastest'
+              },
+              {
+                value: 'Cheapest',
+                displayValue: 'Cheapest'
+              }
+            ]
+          },
+          value: ''
+        }
+      },
     },
     loading: false
   };
@@ -23,16 +77,7 @@ class ContactData extends Component {
     const order = {
       ingredients: this.props.ingredients,
       price: this.props.price,
-      customer: {
-        name: 'Pramod Kharade',
-        address: {
-          street: 'Dehu-alandi Road',
-          ZipCode: '433443',
-          country: 'India'
-        },
-        email: 'test@test.com'
-      },
-      delivertMethod: 'fastest'
+
     };
     axios.post('/orders.json', order).then((res) => {
       this.setState({
@@ -52,7 +97,7 @@ class ContactData extends Component {
   render() {
     let form = (
     <form>
-          <Input inputtype='input' type="text" placeholder=" Your Name" name="name"/>
+          <Input elementType="" elementConfig="" value=""/>
           <Input inputtype='input' type="text" placeholder=" Your Email" name="email"/>
           <Input inputtype='input' type="text" placeholder="Street" name="street"/>
           <Input inputtype='input' type="text" placeholder="Postal Code" name="postalcode"/>
