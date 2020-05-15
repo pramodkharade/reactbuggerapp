@@ -6,6 +6,11 @@ const input = (props) => {
   if (props.inValid && props.shouldValidate && props.touched) {
     inputClasses.push(Classes.Invalid);
   }
+  let validationError = null;
+  if (props.inValid && props.touched) {
+    validationError = <p className={Classes.ValidationError}>Please enter a valid {props.valueType}</p>;
+  }
+
   switch (props.elementType) {
     case( 'input'):
       inputElement = <input  className={inputClasses.join(' ')}
@@ -35,6 +40,7 @@ const input = (props) => {
     <div className={Classes.Input}>
         <label className={Classes.Label}>{props.label}</label>
         {inputElement}
+        {validationError}
         </div>
     );
 }
