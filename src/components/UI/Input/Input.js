@@ -2,20 +2,23 @@ import React from 'react';
 import Classes from './Input.module.css';
 const input = (props) => {
   let inputElement = null;
-
+  const inputClasses = [Classes.InputElement];
+  if (props.inValid && props.shouldValidate && props.touched) {
+    inputClasses.push(Classes.Invalid);
+  }
   switch (props.elementType) {
     case( 'input'):
-      inputElement = <input  className={Classes.InputElement}
+      inputElement = <input  className={inputClasses.join(' ')}
       {...props.elementConfig}
       value={props.value} onChange={props.changed}/>
       break;
     case( 'textarea'):
-      inputElement = <textarea className={Classes.InputElement}
+      inputElement = <textarea className={inputClasses.join(' ')}
       {...props.elementConfig}
       value={props.value} onChange={props.changed}/>;
       break;
     case( 'select'):
-      inputElement = (<select className={Classes.InputElement}
+      inputElement = (<select className={inputClasses.join(' ')}
       value={props.value} onChange={props.changed}>
           {props.elementConfig.options.map((op) => (
         <option key={op.value} value={op.value}>{op.displayValue}</option>
@@ -23,7 +26,7 @@ const input = (props) => {
       </select>);
       break;
     default:
-      inputElement = <input className={Classes.InputElement}
+      inputElement = <input className={inputClasses.join(' ')}
       {...props.elementConfig}
       value={props.value} onChange={props.changed}/>;
   }
