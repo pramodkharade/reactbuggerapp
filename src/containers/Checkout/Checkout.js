@@ -23,6 +23,7 @@ class Checkout extends Component {
       ingredients: ingredients,
       totalPrice: price
     });
+    console.log('Price Is Checkout1::', price);
   }
   checkoutContinuedHandler = () => {
     this.props.history.replace('/checkout/contact-data');
@@ -31,6 +32,7 @@ class Checkout extends Component {
     this.props.history.goBack();
   };
   render() {
+    console.log('Price Is Checkout2::', this.state.totalPrice);
     return (
       <div>
                 <CheckoutSummary ingredients = {this.state.ingredients}
@@ -39,7 +41,7 @@ class Checkout extends Component {
        
        <Route
       path={this.props.match.path + '/contact-data'}
-      render={(props) => (<ContactData ingredients={this.state.ingredients} price={this.state.totalPrice} {...props} />)}
+      render={(props) => (<ContactData ingredients={this.state.ingredients} price={+this.state.totalPrice} {...props} />)}
       />
             </div>
       );

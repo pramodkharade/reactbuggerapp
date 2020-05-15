@@ -14,14 +14,14 @@ class ContactData extends Component {
     loading: false
   };
   orderHandler =(event) => {
-    console.log('Form Data:', this.props.ingredients);
+    console.log('Form Data:', this.props.ingredients, this.props.price);
     event.preventDefault();
     this.setState({
       loading: true
     });
     const order = {
       ingredients: this.props.ingredients,
-      price: this.props.totalPrice,
+      price: this.props.price,
       customer: {
         name: 'Pramod Kharade',
         address: {
