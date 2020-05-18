@@ -28,3 +28,8 @@ Alternatives to the manual approach taken in this course:
 react-validation package: 
 
 https://www.npmjs.com/package/react-validation
+
+
+# Redux Library
+
+npm i --save redux react-redux
