@@ -4,8 +4,12 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
+import Provider, { createStore } from 'redux';
+import reducer from './store/reducer';
+
+const mystore = createStore(reducer);
 const app = (
-<BrowserRouter> <App /></BrowserRouter>
+<Provider store={mystore}><BrowserRouter> <App /></BrowserRouter></Provider>
 );
 
 ReactDOM.render(
