@@ -17,8 +17,7 @@ class BurgerBuilder extends Component {
   // }
   state = {
     purchasing: false,
-    loading: false,
-    error: false
+
   };
   componentDidMount() {
     // axios.get('/ingredients.json')
@@ -120,9 +119,7 @@ class BurgerBuilder extends Component {
       price={this.props.price}
       />;
     }
-    if (this.state.loading) {
-      OrderSummarys = <Spinner/>
-    }
+
     return (
       <Auxiliary>
         <Modal show={this.state.purchasing} modalClosed={this.purchasingCancelHandler}>
