@@ -33,3 +33,7 @@ https://www.npmjs.com/package/react-validation
 # Redux Library
 
 npm i --save redux react-redux
+
+# Async Redux Library for middleware
+
+npm i redux-thunk --save
