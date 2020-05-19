@@ -20,18 +20,19 @@ class BurgerBuilder extends Component {
 
   };
   componentDidMount() {
-    // axios.get('/ingredients.json')
-    //   .then((res) => {
-    //     this.setState({
-    //       ingredients: res.data
-    //     });
-    //     console.log('Ingredients are:', res);
-    //   })
-    //   .catch(error => {
-    //     this.setState({
-    //       error: true
-    //     });
-    //   })
+    this.props.onInitIngredients();
+  // axios.get('/ingredients.json')
+  //   .then((res) => {
+  //     this.setState({
+  //       ingredients: res.data
+  //     });
+  //     console.log('Ingredients are:', res);
+  //   })
+  //   .catch(error => {
+  //     this.setState({
+  //       error: true
+  //     });
+  //   })
   }
   updatePurchasableState = (ingredients) => {
     const sum = Object.keys(ingredients)
@@ -102,7 +103,7 @@ class BurgerBuilder extends Component {
     }
     let OrderSummarys = null;
 
-    let burger = this.state.error ? <p>Ingredients can't be loaded!</p> : <Spinner/>;
+    let burger = this.props.error ? <p>Ingredients can't be loaded!</p> : <Spinner/>;
     if (this.props.ings) {
       burger = (<Auxiliary>
       <Burger ingredients = {this.props.ings}/>
@@ -119,7 +120,9 @@ class BurgerBuilder extends Component {
       price={this.props.price}
       />;
     }
-
+    // if (this.state.loading) {
+    //   OrderSummarys = <Spinner/>
+    // }
     return (
       <Auxiliary>
         <Modal show={this.state.purchasing} modalClosed={this.purchasingCancelHandler}>
@@ -133,13 +136,15 @@ class BurgerBuilder extends Component {
 const mapStateToProps = state => {
   return {
     ings: state.ingredients,
-    price: state.totalPrice
+    price: state.totalPrice,
+    error: state.error
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     onIngredientAdded: (igName) => dispatch(burgerBuilderActions.addIngrident(igName)),
-    onIngredientRemoved: (igName) => dispatch(burgerBuilderActions.removeIngrident(igName))
+    onIngredientRemoved: (igName) => dispatch(burgerBuilderActions.removeIngrident(igName)),
+    onInitIngredients: () => dispatch(burgerBuilderActions.initIngredient())
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));
