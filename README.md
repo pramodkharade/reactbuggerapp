@@ -37,3 +37,7 @@ npm i --save redux react-redux
 # Async Redux Library for middleware
 
 npm i redux-thunk --save
+
+# firebase sign up and sign IN
+
+https://firebase.google.com/docs/reference/rest/auth
