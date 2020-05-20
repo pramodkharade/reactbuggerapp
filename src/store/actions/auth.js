@@ -37,7 +37,7 @@ export const authenticate = (email, password, isSignUp) => {
         dispatch(authSuccess(res.data.idToken, res.data.localId));
       })
       .catch((error) => {
-        dispatch(authFail(error));
+        dispatch(authFail(error.response.data.error));
       });
   }
 }
