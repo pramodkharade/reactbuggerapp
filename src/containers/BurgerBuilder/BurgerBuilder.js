@@ -86,6 +86,7 @@ class BurgerBuilder extends Component {
         purchasing: true
       });
     } else {
+      this.props.onSetAuthRedirectPath('/checkout');
       this.props.history.push('/auth');
     }
   };
@@ -144,7 +145,9 @@ const mapStateToProps = state => {
     ings: state.burgerBuilder.ingredients,
     price: state.burgerBuilder.totalPrice,
     error: state.error,
-    isAuthenticated: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null,
+    buildBurger: state.burgerBuilder.building,
+    authRedirectPath: state.auth.authRedirectPath
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -152,7 +155,8 @@ const mapDispatchToProps = dispatch => {
     onIngredientAdded: (igName) => dispatch(burgerBuilderActions.addIngrident(igName)),
     onIngredientRemoved: (igName) => dispatch(burgerBuilderActions.removeIngrident(igName)),
     onInitIngredients: () => dispatch(burgerBuilderActions.initIngredient()),
-    onPurchaseInit: () => dispatch(burgerBuilderActions.purchaseInit())
+    onPurchaseInit: () => dispatch(burgerBuilderActions.purchaseInit()),
+    onSetAuthRedirectPath: (path) => dispatch(burgerBuilderActions.setAuthRedirectPath(path))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios));
