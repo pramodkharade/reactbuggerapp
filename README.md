@@ -1,6 +1,8 @@
 # reactbuggerapp
 Reactjs
 
+Url is: https://burggerappreact.web.app/
+
 # Install Prop-types library for validation of props type
 
 npm i --save prop-types
@@ -41,3 +43,5 @@ npm i redux-thunk --save
 # firebase sign up and sign IN
 
 https://firebase.google.com/docs/reference/rest/auth
+
+
