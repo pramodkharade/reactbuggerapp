@@ -4,6 +4,8 @@ import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Checkout from './containers/Checkout/Checkout';
 import Orders from './containers/Order/Orders';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as  authAction from './store/actions/index';
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 function App() {
@@ -21,5 +23,9 @@ function App() {
     </div>
     );
 }
-
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignUp: () => dispatch(authAction.authCheckState())
+  }
+}
+export default connect(null, mapDispatchToProps)(App);
